@@ -1,0 +1,89 @@
+workflows:
+  phenova-android:
+    name: Phenova Android (production)
+    max_build_duration: 60
+    instance_type: mac_mini_m1
+    environment:
+      flutter: stable
+      java: 17
+      vars:
+        PACKAGE_NAME: "com.phenova.app"
+        # Release signing (spec §15): provide these as encrypted Codemagic
+        # environment variables in the "phenova-release" group:
+        #   CM_KEYSTORE (base64), CM_KEYSTORE_PASSWORD, CM_KEY_ALIAS, CM_KEY_PASSWORD
+      groups:
+        - phenova-release
+    triggering:
+      events:
+        - push
+        - pull_request
+      branch_patterns:
+        - pattern: '*'
+          include: true
+    scripts:
+      - name: Set up Node 22 (backend build + tests)
+        script: |
+          brew install node@22
+          brew link --overwrite node@22
+          node --version
+      - name: Build + test TypeScript backend (real FFmpeg suite)
+        script: |
+          brew install ffmpeg
+          npm ci --no-audit --no-fund
+          npm run build
+          npm test
+      - name: Get Flutter packages
+        script: |
+          cd packages/client
+          flutter pub get
+      - name: Analyze (must be clean)
+        script: |
+          cd packages/client
+          flutter analyze --no-fatal-infos
+      - name: Widget tests
+        script: |
+          cd packages/client
+          flutter test
+      - name: Build APK (debug smoke)
+        script: |
+          cd packages/client
+          flutter build apk --debug
+      - name: Configure release signing
+        script: |
+          if [ -n "$CM_KEYSTORE" ]; then
+            echo "$CM_KEYSTORE" | base64 --decode > /tmp/phenova-release.keystore
+            cat > packages/client/android/key.properties <<EOF
+          storePassword=$CM_KEYSTORE_PASSWORD
+          keyPassword=$CM_KEY_PASSWORD
+          keyAlias=$CM_KEY_ALIAS
+          storeFile=/tmp/phenova-release.keystore
+          EOF
+            echo "release signing configured"
+          else
+            echo "no keystore – release build will be skipped"
+          fi
+      - name: Build APK (release, signed)
+        script: |
+          if [ -f packages/client/android/key.properties ]; then
+            cd packages/client && flutter build apk --release
+          else
+            echo "ERROR: release signing not configured"
+            exit 1
+          fi
+      - name: Build AAB (release, signed)
+        script: |
+          if [ -f packages/client/android/key.properties ]; then
+            cd packages/client && flutter build appbundle --release
+          else
+            echo "ERROR: release signing not configured"
+            exit 1
+          fi
+    artifacts:
+      - packages/client/build/app/outputs/**/*.apk
+      - packages/client/build/app/outputs/**/*.aab
+    publishing:
+      email:
+        recipients: []
+        notify:
+          success: false
+          failure: true

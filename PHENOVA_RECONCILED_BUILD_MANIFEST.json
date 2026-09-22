@@ -1,0 +1,32 @@
+{
+  "artifact": "PHENOVA_RECONCILED_AUTO_PROXY_INTEGRATED_CODESPACES_2026-09-22.zip",
+  "assembled_at": "2026-09-22",
+  "primary_code_source": "PHENOVA_RECONCILED_BEST_2026-09-22",
+  "integrated_source": "PHENOVA_AUTO_PROXY_1.4.0",
+  "selected_integrations": [
+    "auto-proxy import and background proxy generation",
+    "proxy-first preview and Proxy/Full quality toggle",
+    "filmstrip and scrub-frame infrastructure",
+    "timeline magnetic snap and playhead/scrub performance helpers",
+    "expanded real FFmpeg color/effect/audio mappings",
+    "external ML matting adapters and worker",
+    "proxy/scrub benchmark and integration tests",
+    "Codespaces development container"
+  ],
+  "preserved_canonical_hardening": [
+    "server-side clarification answer suppression",
+    "production/release audit material",
+    "canonical specification material",
+    "free-first provider registry and provider environment template"
+  ],
+  "verification": {
+    "json_validation": true,
+    "typescript_syntax_parse": true,
+    "python_compileall": true,
+    "full_typescript_clean_install_build_verified": false,
+    "flutter_analyze_verified": false,
+    "flutter_device_release_verified": false,
+    "production_end_to_end_verified": false
+  },
+  "notes": "This is a source integration and Codespaces-ready workspace. Full dependency installation, Flutter analysis/build, device testing, and production end-to-end verification remain required in the Codespace/release environment."
+}

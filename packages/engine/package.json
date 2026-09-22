@@ -1,0 +1,20 @@
+{
+  "name": "@phenova/engine",
+  "version": "0.1.0",
+  "description": "Phenova Edit Engine – high-level operations on top of the timeline model",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@phenova/core": "file:../core",
+    "@phenova/ai": "file:../ai",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "@types/node": "^22.0.0",
+    "@types/uuid": "^9.0.8"
+  }
+}

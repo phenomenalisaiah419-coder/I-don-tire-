@@ -1,0 +1,31 @@
+name: phenova
+description: Phenova – Professional AI-Native Video Editor
+version: 0.1.0+1
+publish_to: "none"
+
+environment:
+  sdk: ">=3.5.0 <4.0.0"
+  flutter: ">=3.24.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.5.1
+  uuid: ^4.4.2
+  path_provider: ^2.1.4
+  video_player: ^2.9.1
+  file_picker: ^10.3.3
+  http: ^1.2.2
+  collection: ^1.18.0
+  equatable: ^2.0.5
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/phenova_app_icon.png

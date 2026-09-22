@@ -1,0 +1,11 @@
+# Phenova Media Intelligence
+# Install with: pip install -r requirements.txt
+
+numpy>=1.26
+opencv-python-headless>=4.10
+mediapipe>=0.10.14
+librosa>=0.10.2
+soundfile>=0.12.1
+scikit-learn>=1.5
+torch  # optional – for advanced embeddings
+transformers  # optional

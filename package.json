@@ -1,0 +1,31 @@
+{
+  "name": "phenova",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Phenova – AI-first professional video editor (full production launch)",
+  "workspaces": [
+    "packages/core",
+    "packages/engine",
+    "packages/ai",
+    "packages/render",
+    "packages/media",
+    "services/api",
+    "services/workers"
+  ],
+  "scripts": {
+    "build": "npm run build -w packages/core && npm run build -w packages/ai && npm run build -w packages/render && npm run build -w packages/engine && npm run build -w services/api",
+    "test": "npx tsx tests/unit/capability-router.test.ts && npx tsx tests/unit/timeline.test.ts && npx tsx tests/unit/protocol.test.ts && npx tsx tests/integration/render.test.ts && npx tsx tests/integration/api.test.ts && npx tsx tests/integration/direct-provider-wiring.test.ts && npx tsx tests/integration/proxy.test.ts && npx tsx tests/unit/scrub-bench.test.ts",
+    "start": "node services/api/dist/server.js",
+    "verify:production": "node scripts/production-verification.mjs",
+    "test:router-hardening": "npx tsx tests/unit/capability-router.hardening.test.ts",
+    "gateway": "npx tsx services/api/src/gateway.ts",
+    "engine": "npx tsx services/api/src/engine-server.ts",
+    "start:gateway": "npx tsx services/api/src/gateway.ts"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "@phenova/core",
+  "version": "0.1.0",
+  "description": "Phenova shared types, timeline model, and project schema",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "lint": "eslint src --ext .ts"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "@types/node": "^22.0.0",
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.0",
+    "ts-jest": "^29.2.0"
+  },
+  "dependencies": {
+    "uuid": "^9.0.1",
+    "zod": "^3.23.0"
+  },
+  "files": [
+    "dist"
+  ]
+}

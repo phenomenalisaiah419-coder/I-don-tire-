@@ -1,0 +1,10 @@
+{
+  "name": "@phenova/media",
+  "version": "1.0.0",
+  "description": "Phenova media intelligence (Python analyzer lives in src/)",
+  "private": true,
+  "scripts": {
+    "build": "echo 'python package – nothing to compile'",
+    "test": "python3 -m py_compile src/analyze.py"
+  }
+}

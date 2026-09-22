@@ -1,0 +1,1 @@
+# Keyframe rendering\n\nAdded validated keyframe interpolation and real FFmpeg animated opacity rendering. The same architecture can extend to position, scale and rotation once each property has a verified renderer.\n

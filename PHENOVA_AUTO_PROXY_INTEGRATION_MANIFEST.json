@@ -1,0 +1,19 @@
+{
+  "name": "PHENOVA reconciled best + Auto Proxy 1.4.0 integration",
+  "date": "2026-09-22",
+  "canonical_base": "PHENOVA_RECONCILED_BEST_2026-09-22",
+  "integrated_source": "PHENOVA_AUTO_PROXY_1.4.0",
+  "strategy": "Use the reconciled source as the canonical baseline; integrate Auto Proxy 1.4.0 proxy, scrub, filmstrip, preview-quality, auto-import, and ML-matting additions; preserve reconciled clarification hardening and production/release documentation.",
+  "integrated_features": [
+    "auto-proxy on media import",
+    "proxy-first preview with proxy/full toggle",
+    "bounded proxy generation concurrency",
+    "filmstrip contact sheets and scrub-frame cache",
+    "timeline magnetic snap and scrub performance helpers",
+    "expanded real FFmpeg color/effect/audio mappings",
+    "external ML matting adapters with chromakey fallback",
+    "matting worker",
+    "proxy, scrub, and benchmark tests"
+  ],
+  "verification_status": "source merge completed; full Flutter/device and production end-to-end verification pending"
+}

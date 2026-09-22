@@ -1,0 +1,9 @@
+{
+  "name": "@phenova/workers",
+  "version": "1.0.0",
+  "description": "Phenova background workers (render/proxy) – embedded in the API process by default",
+  "private": true,
+  "scripts": {
+    "build": "echo 'workers run embedded via services/api JobQueue'"
+  }
+}

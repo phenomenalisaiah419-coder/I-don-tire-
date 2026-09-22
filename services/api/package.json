@@ -1,0 +1,25 @@
+{
+  "name": "@phenova/api",
+  "version": "1.0.0",
+  "description": "Phenova production API server – auth, projects, uploads, jobs, billing, AI, acquisition",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "node --experimental-strip-types src/server.ts"
+  },
+  "dependencies": {
+    "@phenova/core": "file:../../packages/core",
+    "@phenova/engine": "file:../../packages/engine",
+    "@phenova/ai": "file:../../packages/ai",
+    "@phenova/render": "file:../../packages/render",
+    "bcryptjs": "^2.4.3",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "@types/node": "^22.0.0",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/uuid": "^9.0.8"
+  }
+}
